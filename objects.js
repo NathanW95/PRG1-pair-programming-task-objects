@@ -40,5 +40,28 @@ function loanStatus(library) {
 
 }
 
+function searchByTitle(bookName) {
+    const booksByTitle = [];
+    for (let i = 0; i < library.length; i++) {
+        if (library[i].title === bookName) {
+            let bookStatus = library[i].isLoaned ? 'Out on Loan' : 'On the Shelf';
+            booksByTitle.push(`${library[i].title} - ${bookStatus}`);
+        }
+    }
+    return booksByTitle;
+}
 
-loanStatus(library);
+
+function totalBooksOnLoan() {
+    let totalLoanedBooks = 0;
+    let totalAvailableBooks = 0;
+    for (let i = 0; i < library.length; i++) {
+         library[i].isLoaned ? totalLoanedBooks++ : totalAvailableBooks++;     
+    }    
+    return `Books on loan: ${totalLoanedBooks}\nBooks available to loan: ${totalAvailableBooks}`; 
+}       
+
+//console.log(searchByTitle("Steve Jobs"));
+console.log(totalBooksOnLoan());
+
+// loanStatus(library);
